@@ -1,27 +1,41 @@
 from django.shortcuts import render
 
-def surfacearea(request):
+def power(request):
     context = {}
-    context['area'] = "0"
+    context['power'] = "0"
+    context['i'] = "0"
     context['r'] = "0"
-    context['h'] = "0"
 
     if request.method == 'POST':
         print("POST method is used")
-        r = request.POST.get('radius', '0')
-        h = request.POST.get('height', '0')
-        print('Radius=', r)
-        print('Height=', h)
+        print('request.POST:', request.POST)
+        
+        # Get intensity and resistance from the form
+        i = request.POST.get('intensity', '0')
+        r = request.POST.get('resistance', '0')
+        
+        print('intensity =', i)
+        print('resistance =', r)
 
+        # Ensure that i and r are valid integers
         try:
-            r = float(r)
-            h = float(h)
-            area = (2 * 3.14159 * r * h) + (2 * 3.14159 * r * r)
-            context['area'] = round(area, 2)
-            context['r'] = str(r)
-            context['h'] = str(h)
-            print('Area=', area)
+            i = int(i)
+            r = int(r)
         except ValueError:
-            print('Invalid input for radius or height.')
+            # If either i or r is not a valid number, set power to 0 and return an error message
+            context['error'] = "Please enter valid numeric values for intensity and resistance."
+            context['power'] = 0
+            return render(request, 'mine/min.html', context)
+
+        # Calculate power using the formula P = I^2 * R
+        power = i * i * r
+        context['power'] = power
+        context['i'] = i
+        context['r'] = r
+
+        print('Power =', power)
 
     return render(request, 'mine/min.html', context)
+
+
+   
