@@ -34,7 +34,6 @@ Publish the website in the given URL.
 ## PROGRAM :
 ```
 min.html
-<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -68,15 +67,26 @@ min.html
             text-align: center;
             padding-top: 25px;
         }
+        
+        .box {
+                width: 600px;
+                height: 450px;
+                background-color: #4CAF50; /* Green background color */
+                border: 2px solid #333;    /* Border around the box */
+                padding: 10px;             /* Space inside the box */
+            }
     </style>
 </head>
 <body>
+    <div class="mainbox">
     <div class="edge">
+        
         <div class="box">
             <h1>Power Of A Lamp Filament In An Incandescent Bulb</h1>
             <h2>Name:Pharsheen Rahuman M Reg no:24006746</h2>
             <form method="POST">
                 {% csrf_token %}
+            
                 <div class="formelt">
                     Intensity: <input type="text" name="intensity" value="{{ r }}"></input> (in amps)<br/>
                 </div>
@@ -89,8 +99,10 @@ min.html
                 <div class="formelt">
                     Power: <input type="text" name="power" value="{{ power }}" readonly></input> watts<br/>
                 </div>
+            
             </form>
         </div>
+    </div>
     </div>
 </body>
 </html>
@@ -141,11 +153,14 @@ urlpatterns = [
 ```
 
 ## SERVER SIDE PROCESSING:
-![Screenshot 2024-11-26 173542](https://github.com/user-attachments/assets/df29d3e0-340d-4a4c-a427-55013fbb9e23)
+
+
+![ex5 2](https://github.com/user-attachments/assets/89d02502-2f45-43cc-a6f9-bfe507a478f3)
 
 
 ## HOMEPAGE:
-![Screenshot 2024-11-26 173419](https://github.com/user-attachments/assets/c76d5567-bd96-4a60-8461-a89af4f3d991)
+
+![Screenshot 2024-12-17 144824](https://github.com/user-attachments/assets/59ad7516-2551-47ab-85a2-9a7c853fb508)
 
 
 ## RESULT:
